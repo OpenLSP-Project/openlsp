@@ -441,3 +441,24 @@ Concept / Protocol Design Phase
 共同设计未来跨语言通信标准。
 # openlsp
 Open Language Service Protocol (OpenLSP)
+---
+
+# Development Status
+
+OpenLSP is currently in the protocol design and reference implementation phase.
+
+Current progress:
+
+- [x] Project definition
+- [x] Whitepaper
+- [x] Protocol specification v0.1
+- [x] Basic message exchange demo
+
+Next goals:
+
+- Define OpenLSP message extensions
+- Improve reference implementation
+- Develop SDK interfaces
+- Test cross-device communication
+
+Contributions are welcome.
