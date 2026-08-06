@@ -126,3 +126,196 @@ Community discussion, feedback, and reference implementations are encouraged.
 ---
 
 *End of Part 1*
+
+---
+
+# 5. Terminology
+
+This section defines the core terms used throughout the OpenLSP specification.
+
+Clear terminology is required to ensure consistent implementations across different platforms.
+
+---
+
+## 5.1 Device
+
+A Device is any physical or virtual computing entity capable of implementing OpenLSP.
+
+Examples include:
+
+- Smartphones
+- Wireless earbuds
+- AR glasses
+- Translation terminals
+- Embedded systems
+
+A Device is not equivalent to a user identity.
+
+One user may operate multiple Devices.
+
+---
+
+## 5.2 Endpoint
+
+An Endpoint is a communication participant within an OpenLSP session.
+
+An Endpoint represents the active communication capability of a Device.
+
+An Endpoint may provide:
+
+- Language input
+- Language output
+- Translation capability
+- Audio processing
+- Display capability
+
+---
+
+## 5.3 Session
+
+A Session is a temporary communication relationship established between OpenLSP Endpoints.
+
+A Session has:
+
+- A beginning
+- An active state
+- An ending condition
+
+A Session does not create:
+
+- Permanent identity
+- Friendship relationship
+- Contact information
+- Social connection
+
+---
+
+## 5.4 Capability
+
+A Capability describes functions supported by an OpenLSP Endpoint.
+
+Examples:
+
+```
+text
+voice
+tts
+subtitle
+image
+ai-agent
+```
+
+Capabilities allow devices with different hardware and software abilities to communicate effectively.
+
+---
+
+## 5.5 Message
+
+A Message is a structured unit of information exchanged between OpenLSP Endpoints.
+
+Messages may represent:
+
+- Discovery information
+- Session requests
+- Session responses
+- Language content
+- Session termination
+
+---
+
+# 6. Architecture
+
+OpenLSP follows a layered architecture model.
+
+```
+User Layer
+
+↓
+
+Application Layer
+
+↓
+
+OpenLSP Protocol Layer
+
+↓
+
+Transport Layer
+
+↓
+
+Device Capability Layer
+```
+
+---
+
+## 6.1 User Layer
+
+The User Layer provides human interaction.
+
+Examples:
+
+- Mobile applications
+- Wearable interfaces
+- Translation devices
+
+The User Layer is responsible for presenting communication experiences.
+
+---
+
+## 6.2 Application Layer
+
+The Application Layer manages OpenLSP implementations.
+
+Responsibilities include:
+
+- Session control
+- User interaction
+- Local service integration
+
+---
+
+## 6.3 Protocol Layer
+
+The OpenLSP Protocol Layer defines:
+
+- Discovery
+- Handshake
+- Session management
+- Message exchange
+
+This layer provides interoperability between different implementations.
+
+---
+
+## 6.4 Transport Layer
+
+The Transport Layer provides device-to-device communication.
+
+Possible transports include:
+
+- Bluetooth
+- NFC
+- Wi-Fi Direct
+- Local network
+
+OpenLSP does not require a single transport technology.
+
+---
+
+## 6.5 Device Capability Layer
+
+The Device Capability Layer provides local processing functions.
+
+Examples:
+
+- Automatic speech recognition (ASR)
+- Translation models
+- Text-to-speech (TTS)
+- Display systems
+
+OpenLSP does not require any specific AI model.
+
+---
+
+*End of Part 2*
