@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenLSP Message Schema",
+  "type": "object",
+
+  "required": [
+    "protocol",
+    "version",
+    "type",
+    "language",
+    "payload"
+  ],
+
+  "properties": {
+
+    "protocol": {
+      "type": "string",
+      "const": "OpenLSP"
+    },
+
+    "version": {
+      "type": "string"
+    },
+
+    "type": {
+      "type": "string"
+    },
+
+    "language": {
+      "type": "object",
+      "required": [
+        "source",
+        "target"
+      ],
+      "properties": {
+
+        "source": {
+          "type": "string"
+        },
+
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+
+    "payload": {
+      "type": "object",
+      "required": [
+        "type",
+        "content"
+      ],
+      "properties": {
+
+        "type": {
+          "type": "string"
+        },
+
+        "content": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
