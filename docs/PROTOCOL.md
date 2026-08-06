@@ -319,3 +319,221 @@ OpenLSP does not require any specific AI model.
 ---
 
 *End of Part 2*
+
+---
+
+# 7. Discovery
+
+Discovery is the first stage of an OpenLSP communication process.
+
+The purpose of Discovery is to allow nearby devices to identify available OpenLSP capabilities.
+
+Discovery does not establish a communication session.
+
+Discovery only announces:
+
+- Protocol support
+- Protocol version
+- Available language information
+- Basic capability information
+
+---
+
+## 7.1 Discovery Message
+
+Example:
+
+```json
+{
+  "protocol": "OpenLSP",
+  "version": "0.2",
+  "type": "DISCOVER",
+  "language": {
+    "primary": "zh-CN"
+  },
+  "capabilities": [
+    "text",
+    "voice",
+    "tts"
+  ]
+}
+```
+
+---
+
+## 7.2 Discovery Privacy
+
+Discovery messages SHOULD NOT contain permanent user identity information.
+
+Discovery SHOULD NOT require:
+
+- User accounts
+- Phone numbers
+- Email addresses
+- Social profiles
+
+The purpose of Discovery is capability awareness, not user identification.
+
+---
+
+# 8. Handshake
+
+After Discovery, two devices may begin a handshake process.
+
+The purpose of the handshake is to:
+
+- Confirm OpenLSP compatibility
+- Exchange communication parameters
+- Prepare a temporary session
+
+The handshake process consists of:
+
+```
+HELLO
+
+↓
+
+HELLO_ACK
+
+↓
+
+SESSION_CREATE
+```
+
+---
+
+# 8.1 HELLO Message
+
+A device sends a HELLO message when requesting communication.
+
+Example:
+
+```json
+{
+  "type": "HELLO",
+  "protocol": "OpenLSP",
+  "version": "0.2",
+  "language": {
+    "source": "zh-CN",
+    "target": "en-US"
+  }
+}
+```
+
+---
+
+# 8.2 HELLO_ACK Message
+
+The receiving device responds with acceptance or rejection.
+
+Accepted example:
+
+```json
+{
+  "type": "HELLO_ACK",
+  "accepted": true
+}
+```
+
+Rejected example:
+
+```json
+{
+  "type": "HELLO_ACK",
+  "accepted": false
+}
+```
+
+A rejected handshake SHALL terminate the connection attempt.
+
+---
+
+# 9. Session Creation
+
+After successful handshake, devices create a temporary OpenLSP Session.
+
+Example:
+
+```json
+{
+  "type": "SESSION_CREATE",
+  "session": {
+    "id": "UUID",
+    "duration": 1800
+  }
+}
+```
+
+---
+
+## 9.1 Session Properties
+
+An OpenLSP Session has the following properties:
+
+- Temporary
+- Independent
+- Expirable
+- Locally managed
+
+A Session does not represent:
+
+- A user account
+- A social relationship
+- A permanent connection
+
+---
+
+## 9.2 Session Lifetime
+
+A Session MAY expire when:
+
+- The negotiated duration ends
+- A device disconnects
+- A user manually terminates communication
+
+---
+
+# 10. Session Termination
+
+Either Endpoint may terminate an active session.
+
+Example:
+
+```json
+{
+  "type": "SESSION_CLOSE",
+  "reason": "completed"
+}
+```
+
+After termination:
+
+- Session state SHOULD be removed
+- Temporary session data SHOULD be discarded
+- Future communication requires a new Session
+
+---
+
+# 11. Session State Model
+
+An OpenLSP Session follows this lifecycle:
+
+```
+CREATED
+
+↓
+
+ACTIVE
+
+↓
+
+CLOSED
+```
+
+A closed Session cannot be resumed.
+
+A new interaction requires creation of a new Session.
+
+---
+
+*End of Part 3*
