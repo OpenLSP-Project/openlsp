@@ -1124,3 +1124,203 @@ Unknown capabilities should be safely ignored.
 ---
 
 *End of Part 6*
+---
+
+# 25. Reference Implementation Guidelines
+
+This section describes recommended approaches for implementing OpenLSP-compatible systems.
+
+OpenLSP does not define a specific programming language, operating system, or hardware platform.
+
+Implementations may use different technologies while maintaining protocol compatibility.
+
+---
+
+# 25.1 Recommended Architecture
+
+A typical OpenLSP implementation may contain the following layers:
+
+```
+Application Layer
+
+↓
+
+OpenLSP Core
+
+↓
+
+Transport Adapter
+
+↓
+
+Device Capability Layer
+```
+
+---
+
+## Application Layer
+
+The Application Layer provides user-facing functions.
+
+Examples:
+
+- Mobile applications
+- Wearable interfaces
+- Translation terminals
+
+Responsibilities include:
+
+- User interaction
+- Session control
+- Communication display
+
+---
+
+## OpenLSP Core
+
+The OpenLSP Core implements the protocol logic.
+
+Responsibilities include:
+
+- Discovery handling
+- Handshake processing
+- Session management
+- Message processing
+- Capability negotiation
+
+The OpenLSP Core should remain independent from specific user interfaces.
+
+---
+
+## Transport Adapter
+
+The Transport Adapter provides communication channels.
+
+Possible implementations include:
+
+- Bluetooth
+- NFC
+- Wi-Fi Direct
+- Local network
+
+The transport layer should be replaceable without changing the protocol logic.
+
+---
+
+## Device Capability Layer
+
+The Device Capability Layer provides hardware and AI functions.
+
+Examples:
+
+- Speech recognition
+- Translation models
+- Text-to-speech
+- Display systems
+
+OpenLSP does not require a specific AI provider.
+
+---
+
+# 26. Minimum Compatible Implementation
+
+A minimum OpenLSP-compatible implementation SHOULD support:
+
+- Device Discovery
+- Handshake
+- Session Creation
+- Message Exchange
+- Session Termination
+
+Additional capabilities may be implemented as extensions.
+
+---
+
+# 27. Optional Features
+
+The following features are optional:
+
+```
+voice communication
+
+text-to-speech
+
+subtitle output
+
+local AI processing
+
+cloud AI processing
+
+visual translation
+```
+
+Optional features should not affect basic interoperability.
+
+---
+
+# 28. Reference Workflow
+
+A typical OpenLSP communication workflow:
+
+```
+Initialize
+
+↓
+
+Discover
+
+↓
+
+Handshake
+
+↓
+
+Create Session
+
+↓
+
+Exchange Messages
+
+↓
+
+Close Session
+```
+
+Each implementation may provide different user experiences while following the same protocol workflow.
+
+---
+
+# 29. SDK Design Direction
+
+Future OpenLSP SDKs may provide simplified interfaces for developers.
+
+Example:
+
+```
+OpenLSP.startSession()
+
+OpenLSP.sendMessage()
+
+OpenLSP.closeSession()
+```
+
+SDK implementations should provide access to core protocol functions while hiding unnecessary complexity.
+
+---
+
+# 30. Implementation Independence
+
+OpenLSP encourages multiple independent implementations.
+
+Compatible implementations may differ in:
+
+- User interface
+- AI models
+- Hardware design
+- Programming languages
+
+Interoperability should be maintained through adherence to the OpenLSP specification.
+
+---
+
+*End of Part 7*
