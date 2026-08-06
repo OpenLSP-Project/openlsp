@@ -537,3 +537,211 @@ A new interaction requires creation of a new Session.
 ---
 
 *End of Part 3*
+
+---
+
+# 12. Message Model
+
+The Message Model defines the structure of information exchanged between OpenLSP Endpoints.
+
+All OpenLSP communication is based on structured messages.
+
+A Message contains:
+
+- Message type
+- Session information
+- Language information
+- Payload data
+
+---
+
+# 12.1 General Message Structure
+
+A standard OpenLSP message follows this structure:
+
+```json
+{
+  "type": "MESSAGE",
+  "version": "0.2",
+  "session": {
+    "id": "UUID"
+  },
+  "language": {
+    "source": "zh-CN",
+    "target": "en-US"
+  },
+  "payload": {
+    "type": "text",
+    "content": "你好"
+  }
+}
+```
+
+---
+
+# 12.2 Message Type
+
+The `type` field identifies the purpose of a message.
+
+OpenLSP v0.2 defines the following message types:
+
+| Type | Purpose |
+|------|---------|
+| DISCOVER | Device capability announcement |
+| HELLO | Request to start communication |
+| HELLO_ACK | Accept or reject request |
+| SESSION_CREATE | Create temporary session |
+| MESSAGE | Exchange language content |
+| SESSION_CLOSE | Terminate session |
+
+Future versions may introduce additional message types.
+
+---
+
+# 13. Payload Model
+
+The Payload Model defines the actual communication content carried by a MESSAGE.
+
+The payload contains:
+
+- Content type
+- Content data
+
+---
+
+## 13.1 Text Payload
+
+Example:
+
+```json
+{
+  "payload": {
+    "type": "text",
+    "content": "你好"
+  }
+}
+```
+
+Text payload is the default communication format.
+
+---
+
+## 13.2 Voice Payload
+
+Future implementations may support direct voice transport.
+
+Example:
+
+```json
+{
+  "payload": {
+    "type": "voice",
+    "format": "audio"
+  }
+}
+```
+
+Voice transmission is an extension capability.
+
+---
+
+## 13.3 Display Payload
+
+Devices with visual output may support subtitle or display information.
+
+Example:
+
+```json
+{
+  "payload": {
+    "type": "subtitle",
+    "content": "Hello"
+  }
+}
+```
+
+---
+
+# 14. Language Model
+
+OpenLSP messages may contain language information.
+
+The language model describes communication direction.
+
+Example:
+
+```json
+{
+  "language": {
+    "source": "zh-CN",
+    "target": "en-US"
+  }
+}
+```
+
+---
+
+## 14.1 Source Language
+
+`source` identifies the original language of the content.
+
+Example:
+
+```
+zh-CN
+```
+
+means:
+
+Chinese language content from Mainland China.
+
+---
+
+## 14.2 Target Language
+
+`target` identifies the preferred output language.
+
+Example:
+
+```
+en-US
+```
+
+means:
+
+English language output for United States locale.
+
+---
+
+# 15. Message Processing Principle
+
+OpenLSP follows the principle:
+
+```
+Send Original Content
+
+↓
+
+Receive Message
+
+↓
+
+Local Processing
+
+↓
+
+Output Result
+```
+
+The receiving Endpoint decides:
+
+- Translation method
+- AI model
+- Speech output
+- Display method
+
+OpenLSP does not require a specific translation implementation.
+
+---
+
+*End of Part 4*
