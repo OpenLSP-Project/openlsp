@@ -904,3 +904,223 @@ Implementations SHOULD NOT:
 ---
 
 *End of Part 5*
+---
+
+# 20. Capability Model
+
+Capability describes the functions and limitations supported by an OpenLSP Endpoint.
+
+Capability information allows different devices to determine compatible communication methods.
+
+A Capability may describe:
+
+- Input methods
+- Output methods
+- Language support
+- Processing abilities
+
+---
+
+# 20.1 Capability Structure
+
+A Capability description may contain:
+
+```json
+{
+  "capabilities": [
+    "text",
+    "voice",
+    "tts"
+  ]
+}
+```
+
+Each Capability represents a supported function.
+
+---
+
+# 20.2 Capability Types
+
+OpenLSP defines the following basic capability categories.
+
+## Text Capability
+
+Supports text-based language communication.
+
+Example:
+
+```
+text
+```
+
+---
+
+## Voice Capability
+
+Supports voice communication.
+
+Example:
+
+```
+voice
+```
+
+---
+
+## Text-to-Speech Capability
+
+Supports audio output from translated content.
+
+Example:
+
+```
+tts
+```
+
+---
+
+## Subtitle Capability
+
+Supports visual language output.
+
+Example:
+
+```
+subtitle
+```
+
+---
+
+# 21. Capability Exchange
+
+Capability Exchange allows two OpenLSP Endpoints to share supported functions.
+
+The exchange process:
+
+```
+CAPABILITY_REQUEST
+
+↓
+
+CAPABILITY_RESPONSE
+```
+
+---
+
+# 21.1 Capability Request
+
+A Device may request capability information from another Device.
+
+Example:
+
+```json
+{
+  "type": "CAPABILITY_REQUEST"
+}
+```
+
+---
+
+# 21.2 Capability Response
+
+The receiving Device responds with supported capabilities.
+
+Example:
+
+```json
+{
+  "type": "CAPABILITY_RESPONSE",
+  "capabilities": [
+    "text",
+    "voice",
+    "tts"
+  ]
+}
+```
+
+---
+
+# 22. Language Capability
+
+Devices may announce supported languages.
+
+Example:
+
+```json
+{
+  "languages": [
+    "zh-CN",
+    "en-US"
+  ]
+}
+```
+
+Language capability allows devices to determine whether communication is possible.
+
+---
+
+# 23. Communication Selection
+
+After capability exchange, OpenLSP implementations may select an appropriate communication method.
+
+Example selection process:
+
+```
+Voice Available
+
+↓
+
+Use Voice Communication
+
+↓
+
+If unavailable
+
+↓
+
+Use Text Communication
+
+↓
+
+If unavailable
+
+↓
+
+Use Subtitle Communication
+```
+
+---
+
+# 23.1 Selection Principle
+
+OpenLSP does not require a single communication method.
+
+The selected method depends on:
+
+- Device capability
+- User preference
+- Network conditions
+- Available processing resources
+
+---
+
+# 24. Capability Extension
+
+Future versions of OpenLSP may define additional capabilities.
+
+Examples:
+
+```
+image
+video
+ai-agent
+sign-language
+```
+
+New capabilities should not break existing implementations.
+
+Unknown capabilities should be safely ignored.
+
+---
+
+*End of Part 6*
