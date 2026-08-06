@@ -1,0 +1,16 @@
+{
+  "protocol": "OpenLSP",
+  "version": "0.2",
+  "type": "MESSAGE",
+  "session": {
+    "id": "example-session"
+  },
+  "language": {
+    "source": "zh-CN",
+    "target": "en-US"
+  },
+  "payload": {
+    "type": "text",
+    "content": "你好"
+  }
+}
