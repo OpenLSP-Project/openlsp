@@ -1,129 +1,128 @@
-# OpenLSP Protocol Specification v0.1
+# OpenLSP Protocol Specification
 
 ## Open Language Service Protocol
 
-Version: 0.1-alpha
+**Version:** 0.2-alpha
 
-Status: Draft
+**Status:** Draft
 
+**Last Updated:** August 2026
+
+---
+
+# Revision History
+
+| Version | Status | Description |
+|----------|--------|-------------|
+| 0.1-alpha | Draft | Initial protocol framework |
+| 0.2-alpha | Draft | Introduced protocol philosophy and protocol scope |
+
+---
 
 # 1. Introduction
 
-OpenLSP defines an open protocol for temporary cross-language communication between devices.
+OpenLSP (Open Language Service Protocol) is an open protocol for temporary cross-language communication between nearby devices.
 
-The protocol does not define translation engines.
+Unlike translation applications, OpenLSP does not define how translation is performed.
 
-It defines how language services discover, connect and exchange language information.
+Instead, OpenLSP defines how devices discover each other, establish temporary language sessions, exchange messages, and terminate communication securely.
 
+Translation engines, AI models, speech recognition systems, user interfaces, and commercial products are outside the scope of this specification.
 
-# 2. Design Goals
+The goal of OpenLSP is to become an open interoperability standard for multilingual communication.
 
-OpenLSP follows these principles:
+---
 
-- Open protocol
-- Cross-platform compatibility
-- Temporary communication sessions
-- Privacy-first design
-- Local AI preferred
+# 2. Design Philosophy
 
+OpenLSP is built upon the following design principles.
 
-# 3. Communication Model
+## 2.1 Connection Before Translation
 
+The primary responsibility of OpenLSP is to establish communication.
 
-Device A
+Translation is considered an implementation detail handled by participating devices.
 
-Speech
-↓
-Local ASR
-↓
-OpenLSP Message
-↓
-Transport Layer
+---
 
+## 2.2 Temporary by Default
 
-Device B
+Every communication session is temporary.
 
-OpenLSP Message
-↓
-Local Translation Model
-↓
-TTS Output
+OpenLSP does not create permanent relationships between users.
 
+A completed session should leave no persistent connection unless both parties explicitly choose another communication channel outside OpenLSP.
 
-# 4. Session Model
+---
 
-Each communication starts with a temporary session.
+## 2.3 Original Text First
 
-Session lifecycle:
+OpenLSP transports original language content.
 
-DISCOVER
+Translation should be performed by the receiving device whenever possible.
 
-↓
+This approach minimizes unnecessary data transfer while allowing different translation technologies to coexist.
 
-HANDSHAKE
+---
 
-↓
+## 2.4 Privacy First
 
-ACTIVE
+OpenLSP is designed to minimize unnecessary data collection.
 
-↓
+The protocol does not require:
 
-CLOSE
+- User accounts
+- Phone numbers
+- Email addresses
+- Social identities
+- Mandatory cloud storage
 
+Implementations may provide additional services, but they are outside the protocol specification.
 
-# 5. Message Format
+---
 
-Example:
+## 2.5 Open Standard
 
-```json
-{
-  "protocol": "OpenLSP",
-  "version": "0.1",
-  "session": {
-    "type": "temporary"
-  },
-  "language": {
-    "source": "zh-CN",
-    "target": "en-US"
-  },
-  "payload": {
-    "type": "text",
-    "content": "你好"
-  }
-# 6. Transport Layer
+OpenLSP is an open protocol.
 
-OpenLSP does not require a specific transport protocol.
+Any developer, organization, hardware manufacturer, or software vendor may implement OpenLSP.
 
-Implementations MAY use:
+No single commercial entity should control the protocol specification.
 
-- Bluetooth
-- NFC
-- WiFi Direct
-- Local network
+---
 
-Future transport methods can be added through protocol extensions.
+# 3. Protocol Scope
 
+This specification defines:
 
-# 7. Security Principles
+- Device discovery
+- Temporary session establishment
+- Session lifecycle
+- Capability negotiation
+- Message exchange
+- Session termination
 
-OpenLSP is designed with privacy-first principles.
+This specification does **not** define:
 
-Target security objectives:
+- Machine translation quality
+- Speech recognition algorithms
+- AI model implementation
+- User interface design
+- Business models
+- Commercial products
 
-- Encrypted communication
-- Temporary sessions
-- No permanent identity requirement
-- No mandatory cloud storage
-- Automatic session expiration
+---
 
+# 4. Protocol Status
 
-# 8. Future Development
+OpenLSP Version 0.2-alpha is an early engineering draft.
 
-Future versions of OpenLSP may define:
+The specification is under active development.
 
-- Device discovery protocol
-- Authentication methods
-- Audio streaming extensions
-- AI capability negotiation
-- SDK interfaces
-- Cross-platform reference implementations
+Protocol fields, message formats, and transport mechanisms may change before Version 1.0.
+
+Community discussion, feedback, and reference implementations are encouraged.
+
+---
+
+*End of Part 1*
