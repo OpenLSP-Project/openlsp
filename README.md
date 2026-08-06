@@ -475,3 +475,39 @@ Next goals:
 - Test cross-device communication
 
 Contributions are welcome.
+---
+
+## Core Implementation
+
+OpenLSP provides a minimal reference core implementation.
+
+Components:
+
+- Message creation
+- Session management
+- Python package structure
+- Automated tests
+
+
+## Continuous Integration
+
+OpenLSP uses GitHub Actions for automated testing.
+
+Every code change can be validated through the CI workflow.
+
+
+## Development Status
+
+Current development stage:
+
+v0.3-alpha
+
+Implemented:
+
+- Protocol specification
+- Message schema
+- Core message module
+- Session management
+- Example applications
+- Automated test suite
+- Continuous integration
