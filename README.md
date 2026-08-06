@@ -1,3 +1,16 @@
+# OpenLSP
+
+Open Language Service Protocol
+
+Global open protocol for temporary cross-language communication.
+
+## Developer Resources
+
+- Protocol Specification: docs/PROTOCOL.md
+- Message Examples: examples/basic-message.json
+- JSON Schema: schemas/message.schema.json
+
+---
 # OpenLSP Whitepaper v1.1
 
 # Open Language Service Protocol
