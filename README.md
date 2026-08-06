@@ -6,9 +6,9 @@ Global open protocol for temporary cross-language communication.
 
 ## Developer Resources
 
-- Protocol Specification: docs/PROTOCOL.md
-- Message Examples: examples/basic-message.json
-- JSON Schema: schemas/message.schema.json
+- Protocol Specification: [docs/PROTOCOL.md](docs/PROTOCOL.md)
+- Message Examples: [examples/basic-message.json](examples/basic-message.json)
+- JSON Schema: [schemas/message.schema.json](schemas/message.schema.json)
 
 ---
 # OpenLSP Whitepaper v1.1
