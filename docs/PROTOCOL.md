@@ -1324,3 +1324,133 @@ Interoperability should be maintained through adherence to the OpenLSP specifica
 ---
 
 *End of Part 7*
+---
+
+# 31. Extension Framework
+
+OpenLSP is designed to support future extensions while maintaining compatibility with existing implementations.
+
+The core protocol should remain stable.
+
+New functions should be introduced through extension mechanisms.
+
+---
+
+# 31.1 Extension Principles
+
+OpenLSP extensions should follow these principles:
+
+- Backward compatibility
+- Clear capability definition
+- Independent implementation
+- No disruption of core communication
+
+Extensions should enhance OpenLSP without changing existing protocol behavior.
+
+---
+
+# 32. Version Compatibility
+
+OpenLSP uses version information to identify protocol generations.
+
+Example:
+
+```json
+{
+  "protocol": "OpenLSP",
+  "version": "0.2"
+}
+```
+
+Implementations SHOULD support communication with compatible versions.
+
+---
+
+## 32.1 Compatibility Rules
+
+When two devices use different versions:
+
+- Shared features SHOULD be used
+- Unknown features SHOULD be ignored
+- Basic communication SHOULD remain possible
+
+A newer implementation should not prevent communication with older implementations.
+
+---
+
+# 33. Unknown Field Handling
+
+OpenLSP messages may contain future extension fields.
+
+Example:
+
+```json
+{
+  "type": "MESSAGE",
+  "future_extension": "example"
+}
+```
+
+Implementations receiving unknown fields:
+
+- SHOULD ignore unsupported fields
+- SHOULD continue processing valid information
+- SHOULD NOT terminate communication unnecessarily
+
+---
+
+# 34. Extension Registration
+
+Future capabilities may be introduced through extension identifiers.
+
+Examples:
+
+```
+voice-v2
+
+ai-agent
+
+robot-control
+
+visual-language
+```
+
+Extension identifiers should clearly describe their function.
+
+---
+
+# 35. Protocol Governance
+
+OpenLSP is intended to remain an open protocol.
+
+Protocol development should encourage:
+
+- Transparent discussion
+- Public specification updates
+- Multiple independent implementations
+
+No single organization should control OpenLSP compatibility.
+
+---
+
+# 36. Long-Term Compatibility Goal
+
+The long-term goal of OpenLSP is:
+
+```
+Stable Core
+
++
+
+Open Extensions
+
+=
+
+Continuous Evolution
+```
+
+Future technologies should be able to participate in OpenLSP communication without replacing the original protocol foundation.
+
+---
+
+*End of Part 8*
