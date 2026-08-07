@@ -2,6 +2,16 @@
 
 All notable changes to OpenLSP are documented in this file.
 
+## v0.4-alpha
+
+### Added
+
+- Message validation system
+- Exception handling framework
+- Public SDK API exports
+- Advanced validation interface
+- Extended automated test coverage
+
 
 ## v0.3-alpha
 
