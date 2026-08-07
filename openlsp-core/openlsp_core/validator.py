@@ -6,6 +6,7 @@ Version: 0.4-alpha
 Basic validation for OpenLSP messages.
 """
 
+from .exceptions import InvalidMessageError
 
 REQUIRED_FIELDS = [
     "protocol",
