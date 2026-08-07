@@ -511,3 +511,15 @@ Implemented:
 - Example applications
 - Automated test suite
 - Continuous integration
+
+---
+
+## v0.4-alpha
+
+Implemented:
+
+- Message validation system
+- Exception handling framework
+- Public SDK API exports
+- Advanced validation interface
+- Extended automated test coverage
